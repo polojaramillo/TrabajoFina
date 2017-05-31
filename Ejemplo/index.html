@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Dp Agenda</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+        <meta charset="utf-8">
+		
+        <link href="css/estilos.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="jquery-mobile/agenda-custom-theme.min.css" />
+        <link href="jquery-mobile/jquery.mobile.structure-1.3.0.min.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script src="jquery-mobile/jquery-1.8.3.min.js" type="text/javascript"></script>
+        <script src="jquery-mobile/jquery.mobile-1.3.0.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+	    
+	    
+	    
+	    
+    </head>
+    <body onload="onBodyLoad()">
+    
+    
+    
+    
+    
+  <!--  esta es la página de entrada: el listado de contactos-->
+    <div data-role="page" id="home">
+      <div data-role="header" data-theme="a">
+        <div class="ui-btn-left">
+        <a href="#form" data-role="button" data-inline="true" data-icon="plus" data-iconpos="notext">Agregar Nuevo Contacto</a>
+       
+        </div>
+      	<h1><b>Catálogo de Contactos</b></h1>
+        <div class="ui-btn-right">
+        <a href="#ayuda" data-role="button" data-inline="true" data-icon="info" data-iconpos="notext">Acerca de...</a>
+        </div>
+      </div>
+      <div data-role="content">
+      <div align="center"><img src="images/Dportenis-intro.png" width="100%" alt="Servicios"></div>
+        <div data-role="collapsible-set" data-theme="a | b">
+          <div data-role="collapsible" id="lista_familia">
+            <h3>Contactos-Amigos</h3>
+            <ul data-role="listview" data-filter="true" data-inset="true" data-split-icon="edit" >
+            </ul>
+            
+          </div>
+          <div data-role="collapsible" data-collapsed="true" id="lista_trabajo" >
+            <h3>Contactos-Trabajo</h3>
+            <ul data-role="listview" data-filter="true" data-inset="true" data-split-icon="edit">
+            </ul>
+          </div>
+          <div data-role="collapsible" data-collapsed="true" id="lista_amigo">
+            <h3>Contactos-Provedores</h3>
+            <ul data-role="listview" data-filter="true" data-inset="true" data-split-icon="edit">
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div data-role="footer" data-position="fixed">
+   <div data-role="navbar">
+      <ul>
+        <li><a href="#home" class="ui-btn-block" data-icon="arrow-l" data-rel="back" data-role="button" data-theme="a">Atrás</a></li>
+        <li><a href="#ventana" data-theme="a" data-role="button" data-icon="info">Informacion</a></li>
+        <li><a href="#form" data-role="button"  data-theme="a"data-icon="arrow-r" data-transition="slide" >Siguiente</a></li>
+      </ul>
+    
+    </div>
+  </div>
+      
+    </div>
+    
+        
+   <!--  página de detalle-->
+    <div data-role="page" id="detalle">
+      <div data-role="header" data-theme="c">
+        <h1>Información del Servicio</h1>
+      </div>
+      <div data-role="content">
+      	<div class="caja_blanca">
+        	<p id="categoria"></p>
+            <div id="foto"><img id="foto_img" src="assets/no_foto.png"/></div>
+        </div>
+
+     	<div class="caja_blanca">
+        <h3 id="nombre">Deportenis MR</h3>
+         <div ><span id="num_tel">01 669 985 1710</span> <a href="#" data-role="button" data-theme="a" data-icon="flat-location" data-iconpos="notext" data-inline="true"  id="telefono">Llamar</a></div>
+        <div id="email"><span id="label_mail">grupoDp@Dportenis.mx</span> <a href="#" data-role="button" data-theme="a" data-inline="true" data-icon="mail" data-iconpos="notext">Llamar</a></div>
+        </div>
+
+
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    <!--formularios-->
+    <div data-role="page" id="form">
+      <div data-role="header" data-theme="a">
+        <h1>Agregar Contacto</h1>
+      </div>
+       <div data-role="content">
+           <div class="" >
+        		<div id="fotoEdit"><a href="#"><img id="fotoEdit_img" src="assets/no_foto.png"/></a>
+            </div>
+        </div>
+        <center>
+           <div data-role="fieldcontain" align="center">
+             <input type="text" name="ti_nombre" data-theme="c" id="ti_nombre" value="" placeholder="Nombre" />
+           </div>
+           <div data-role="fieldcontain">
+             <input type="email" name="ti_apellidos" data-theme="c" id="ti_apellidos" value="" placeholder="E-mail" />
+           </div>
+           <div data-role="fieldcontain">
+             <input type="text" name="ti_telefono" data-theme="c" id="ti_telefono" value="" placeholder="Domicilio" />
+           </div>
+           <div data-role="fieldcontain">
+             <textarea cols="40" rows="8" data-theme="c" name="ti_mail" id="ti_mail"  placeholder="Nota"></textarea>
+           </div>
+           
+                 
+                
+           <div id="cajaCategorias">
+               <div data-role="fieldcontain" align=""  >
+                 <fieldset data-role="controlgroup" data-type="vertical"  >
+                   <input  type="radio" data-theme="a" name="categoriaSel" id="cat_familia" value="familia" />
+                   <br><label for="cat_familia" >Contacto-Amigos</label>
+                   <input type="radio"  data-theme="a"name="categoriaSel" id="cat_trabajo" value="trabajo" />
+                   <label for="cat_trabajo">Contactos-Trabajo</label>
+                   <input type="radio" data-theme="a" name="categoriaSel" id="cat_amigo" value="amigo" />
+                  <br><br> <label for="cat_amigo">Contacto-Provedores</label>
+                 </fieldset>
+               </div>
+            </div>
+           
+
+        <button class="ui-overlay-b"  data-theme="c" id="b_guardar">Guardar</button>
+	</center>
+	</div>
+           <div data-role="footer" data-position="fixed" data-theme="a">
+   		<div data-role="navbar">
+      <ul>
+        <li><a href="#home" data-rel="back" data-role="button" data-theme="a" data-icon="arrow-l">Atrás</a></li>
+        <li><a href="#home" data-role="button"  data-theme="a"data-icon="home">Home</a></li>
+        <li><a href="#ventana" data-role="button" data-theme="a" data-icon="info">Informacion</a></li>
+        <li><a href="#ayuda" class="ui-bar-a" data-icon="arrow-r" data-role="button" data-theme="a">Siguiente</a></li>
+      </ul>
+    	</div>
+     </div>
+       
+    </div>
+    
+    
+    
+    
+    
+    <!--buscar contactos-->
+    <div data-role="page" id="contactos">
+      <div data-role="header">
+      	<div class="ui-btn-left">
+            <a href="#" data-role="button" data-inline="true" data-icon="back" data-iconpos="notext" data-rel="back">Volver</a>
+        	</div>
+        <h1>Contactos</h1>
+      </div>
+      <div data-role="content" align="center">
+        <div data-role="fieldcontain">
+          <input type="text" name="ti_search" id="ti_search" value="" placeholder="Nombre" />
+        </div>
+        <button id="b_buscar">Buscar</button>
+      </div>
+    </div>
+    
+    
+    
+   <!-- formulario de envío-->
+    <div data-role="page" id="mail_page">
+      <div data-role="header">
+      	<div class="ui-btn-left">
+            <a href="#" data-role="button" data-inline="true" data-icon="back" data-iconpos="notext" data-rel="back">Volver</a>
+        	</div>
+        <h1>Email</h1>
+      </div>
+      <div data-role="content">
+        <div data-role="fieldcontain">
+          <input type="text" name="ti_asunto" id="ti_asunto" value="" placeholder="asunto"  />
+        </div>
+        <div data-role="fieldcontain">
+          <textarea cols="40" rows="8" name="ta_body" id="ta_body" placeholder="Este es el cuerpo del mensaje"></textarea>
+        </div>
+        <button id="b_enviar">Enviar</button>
+      </div>
+    </div>
+    
+    
+    
+    
+    <!--página de ayuda-->
+    <div data-role="page" id="ayuda">
+      <div data-role="header" data-theme="a">
+        <h1>Acerca de mí</h1>
+      </div>
+      <div data-role="content">
+      
+      <center>
+      <img src="images/polo.jpg" width="20%"> <br><br>
+      </center>
+      <b>Datos personales : </b>
+     	 <ul id="listaAyuda">
+        	<h3>Ing. Polo Jaramillo <img src="images/facebook.png" ><a href="www.facebook.com"></a></img></h3>
+          
+           		Correo: jhova_29@hotmail.com<br><br>
+            </ul>
+            <center>
+            
+            </center>
+        
+<br>
+<br>
+
+<center><b>Desea dejar algun Donativo para nuestra Empresa</b></center>
+                   <br>
+<br>
+
+
+            <center>
+      		
+            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.sandbox.paypal.com/es_XC/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+     
+            </center>
+      
+      </div>
+      
+      <div data-role="footer" data-position="fixed">
+   <div data-role="navbar">
+      <ul>
+        <li><a href="#home" data-rel="back" data-theme="a" data-role="button" data-icon="arrow-l" data-transition="fade">Atrás</a></li>
+        <li><a href="#home" data-role="button" data-theme="a" data-icon="home" data-transition="fade">Home</a></li>
+        <li><a href="#ventana" data-role="button" data-theme="a" data-icon="info" data-transition="fade">Informacion</a></li>
+        <li><a href="#home" data-role="button"data-theme="a" data-icon="arrow-r" data-transition="fade">Siguiente</a></li>
+      </ul>
+    </div>
+  </div>
+      
+    </div>
+    
+     <!-- info-->
+ <div data-role="page" data-tip id="ventana">
+  <div data-role="header" data-theme="a">
+    <h1>Información</h1>
+  </div>
+<div data-role="content" align="justify">
+ <center> Aplicación desarrollada en PhoneGap.<p>
+Por Polo Jaramillo - Junio 2017<p><br>
+<b>Mestra: </b> Monica Olivarria </center>
+  <a href="" data-rel="back" data-theme="a" data-role="button">Cerrar</a>
+</div>
+</div>
+    
+    	
+    </body>
+</html>
+
